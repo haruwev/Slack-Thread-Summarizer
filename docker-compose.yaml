@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  slack-summarizer-bot:
+    build: .
+    container_name: slack-summarizer-bot
+    restart: unless-stopped
+    volumes:
+      - ./.env:/app/.env
+      - ./logs:/app/logs
+      # 開発時に便利：ソースコードの変更をコンテナに即時反映
+      - ./slack_bot_summarizer.py:/app/slack_bot_summarizer.py
+      - ./llm_service.py:/app/llm_service.py
+    environment:
+      - PYTHONUNBUFFERED=1
+    # ヘルスチェック設定
+    healthcheck:
+      test: ["CMD", "python", "-c", "import os; exit(0 if os.path.exists('/app/logs') else 1)"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+    # コンテナのログを確認しやすくする設定
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

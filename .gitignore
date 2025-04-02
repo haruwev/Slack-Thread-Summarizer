@@ -1,0 +1,4 @@
+.env
+logs
+notion_debug.py
+slack_bot_summarizer_former.py
