@@ -45,8 +45,8 @@ ANTHROPIC_API_KEY=your-anthropic-api-key-here
 # Azure OpenAI 認証情報
 AZURE_OPENAI_API_KEY=your-azure-openai-api-key-here
 AZURE_OPENAI_ENDPOINT=https://your-resource-name.openai.azure.com/
-AZURE_OPENAI_DEPLOYMENT=gpt-4-turbo
-AZURE_OPENAI_API_VERSION=2023-12-01-preview
+AZURE_OPENAI_DEPLOYMENT=model_name
+AZURE_OPENAI_API_VERSION=api_version
 
 # Notion API 連携
 NOTION_API_KEY=secret_your-notion-api-key-here
